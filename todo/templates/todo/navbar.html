@@ -1,0 +1,66 @@
+<!--Navbar -->
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark orange lighten-1">
+    <a class="navbar-brand" href="{% url 'home' %}">Todo Woo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+            aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item
+                {% if request.path == '/' %}
+                    active
+                 {% endif %} ">
+                <a class="nav-link" href="{% url 'home' %}">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item
+                {% if request.path == '/create/' %}
+                    active
+                 {% endif %} ">
+                    <a class="nav-link" href="{% url 'createtodo' %}">Create</a>
+                </li>
+                <li class="nav-item
+                 {% if request.path == '/current/' %}
+                    active
+                 {% endif %} ">
+                    <a class="nav-link" href="{% url 'currenttodos' %}">Current</a>
+                </li>
+                <li class="nav-item
+                {% if request.path == '/completed/' %}
+                    active
+                 {% endif %} ">
+                    <a class="nav-link" href="{% url 'completedtodo' %}">Completed</a>
+                </li>
+            {% endif %}
+
+        </ul>
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+
+            {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                        <span>{{ request.user.username }}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-warning"
+                         aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="{% url 'logoutuser' %}">Logout</a>
+
+                    </div>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'loginuser' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'signupuser' %}">Register</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+<!--/.Navbar -->

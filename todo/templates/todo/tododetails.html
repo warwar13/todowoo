@@ -1,0 +1,69 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-6">
+                <br>
+                <br>
+                <!-- Material form subscription -->
+                <div class="card">
+
+                    <h5 class="card-header orange white-text text-center py-4">
+                        <strong>Create Todo</strong>
+                    </h5>
+
+                    <!--Card content-->
+                    <div class="card-body px-lg-5">
+
+                        <!-- Form -->
+                        <form class="text-center" style="color: #757575;" method="post">
+                            {% csrf_token %}
+
+                            <!-- Name -->
+                            <div class="md-form mt-3">
+                                <input value="{{ details.title }}" name="title" type="text" id="title"
+                                       class="form-control">
+                                <label for="title">Title</label>
+                            </div>
+
+                            <!-- Memo -->
+                            <div class="md-form amber-textarea active-amber-textarea-2">
+                                <textarea name="memo" id="form16" class="md-textarea form-control"
+                                          rows="3">{{ details.memo }}</textarea>
+                                <label for="form16">Memo</label>
+                            </div>
+
+                            <!-- Material unchecked -->
+                            <div class="form-check">
+                                <input name="important" type="checkbox" class="form-check-input" id="materialUnchecked"
+                                       {% if details.important %}checked{% endif %}>
+                                <label class="form-check-label" for="materialUnchecked">Important</label>
+                            </div>
+                            <br>
+                            <!-- Sign in button -->
+                            <button class="btn btn-warning btn-block btn-rounded z-depth-0 waves-effect"
+                                    type="submit">Save
+                            </button>
+
+                            <a class="btn btn-success btn-rounded mt-2 z-depth-0 waves-effect"
+                               href="{% url 'completetodo' details.id %}">Complete</a>
+                            <a class="btn btn-danger btn-rounded  z-depth-0  waves-effect"
+                               href="{% url 'deletetodo' details.id %}">Delete</a>
+
+                        </form>
+                        <!-- Form -->
+
+                    </div>
+
+                </div>
+                <!-- Material form subscription -->
+            </div>
+            <div class="col"></div>
+
+        </div>
+    </div>
+
+{% endblock %}

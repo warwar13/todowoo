@@ -1,0 +1,37 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-6">
+                <br>
+                <br>
+                <!-- Material form login -->
+                <div class="card">
+
+                    <h5 class="card-header orange white-text text-center py-4">
+                        <strong>Current Todos</strong>
+                    </h5>
+
+
+                    <!--Card content-->
+                    <div class="card-body px-lg-5 pt-3">
+                        <div class="list-group">
+                            {% for todo in todos %}
+                                <a href="#"
+                                   class="list-group-item list-group-item-action">{{ todo.title }}
+                                    <small><em>{{ todo.memo }}</em></small></a>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- Material form login -->
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}

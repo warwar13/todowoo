@@ -1,0 +1,57 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-6">
+                <br>
+                <br>
+                <!-- Material form subscription -->
+                <div class="card">
+
+                    <h5 class="card-header orange white-text text-center py-4">
+                        <strong>Create Todo</strong>
+                    </h5>
+
+                    <!--Card content-->
+                    <div class="card-body px-lg-5">
+
+                        <!-- Form -->
+                        <form class="text-center" style="color: #757575;" method="post">
+                            {% csrf_token %}
+
+                            <!-- Name -->
+                            <div class="md-form mt-3">
+                                <input name="title" type="text" id="title" class="form-control">
+                                <label for="title">Title</label>
+                            </div>
+
+                            <!-- Memo -->
+                            <div class="md-form amber-textarea active-amber-textarea-2">
+                                <textarea name="memo" id="form16" class="md-textarea form-control" rows="3"></textarea>
+                                <label for="form16">Memo</label>
+                            </div>
+
+                            <!-- Material unchecked -->
+                            <div class="form-check">
+                                <input name="important" type="checkbox" class="form-check-input" id="materialUnchecked">
+                                <label class="form-check-label" for="materialUnchecked">Important</label>
+                            </div>
+
+                            <!-- Sign in button -->
+                            <button class="btn btn-warning btn-rounded btn-block z-depth-0 my-4 waves-effect"
+                                    type="submit">Create
+                            </button>
+
+                        </form>
+                        <!-- Form -->
+
+                    </div>
+
+                </div>
+                <!-- Material form subscription -->
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}

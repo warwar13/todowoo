@@ -1,0 +1,67 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+
+            </div>
+            <div class="col-6">
+                <br>
+                <br>
+                <!-- Material form login -->
+                <div class="card">
+
+                    <h5 class="card-header orange white-text text-center py-4">
+                        <strong>Sign in</strong>
+                    </h5>
+
+                    <!--Card content-->
+                    <div class="card-body px-lg-5 pt-3">
+                        {% if error %}
+                            <div class="alert alert-warning" role="alert">
+                                {{ error }}
+                            </div>
+                        {% endif %}
+                        <!-- Form -->
+                        <form class="text-center" style="color: #757575;" method="post">
+                            {% csrf_token %}
+
+                            <!-- Email -->
+                            <div class="md-form">
+                                <input name="username" type="text" id="materialLoginFormEmail" class="form-control">
+                                <label for="materialLoginFormEmail">Username</label>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="md-form">
+                                <input name="password" type="password" id="materialLoginFormPassword"
+                                       class="form-control">
+                                <label for="materialLoginFormPassword">Password</label>
+                            </div>
+
+
+                            <!-- Sign in button -->
+                            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
+                                    type="submit">Sign in
+                            </button>
+
+                            <!-- Register -->
+                            <p>Not a member?
+                                <a href="{% url 'signupuser' %}">Register</a>
+                            </p>
+
+
+                        </form>
+                        <!-- Form -->
+
+                    </div>
+
+                </div>
+                <!-- Material form login -->
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
